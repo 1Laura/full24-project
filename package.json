@@ -16,5 +16,9 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "dependencies": {
+    "random-animal-name": "^0.1.1",
+    "random-cat-img": "^1.1.7"
   }
 }

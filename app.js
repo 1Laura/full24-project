@@ -1,6 +1,8 @@
 const getRandomEmoji = require('./modules/emojiList');
 const getRandomName = require('./modules/nameList');
-const getRandomAge = require('./modules/randomNumber')
+const getRandomAge = require('./modules/randomNumber');
+const animalName = require("random-animal-name");
+const randomCatImage = require("random-cat-img")
 
 function createUser() {
     const user = {
@@ -18,3 +20,19 @@ function doStuff() {
 
 doStuff();
 
+
+function getAnimalName() {
+    const name = animalName();
+    console.log(name)
+}
+
+getAnimalName();
+
+function getRandomCatImg() {
+    randomCatImage().then(catImg => {
+        console.log(catImg.message);
+    });
+
+}
+
+getRandomCatImg()
