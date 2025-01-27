@@ -1,0 +1,6 @@
+create 3 node modules,
+1 returns random emojie
+2 returns random number
+3 returns random name
+
+in app js, make logix so when you run app, you get small user object with random keys, with emojie, age, name
