@@ -2,15 +2,11 @@ const express = require("express");
 const app = express();
 const getEmoji = require("./modules/emojiList");
 
-app.get("/some", (req, res) => {
-    function getRandomEmoji() {
-        const emojiList = getEmoji();
-        const randomIndex = Math.floor(Math.random() * emojiList.length);
-        return emojiList[randomIndex];
-    }
-    const randomEmoji = getRandomEmoji();
+app.get("/info/:text", (req, res) => {
+    console.log(req.params.text)
 
-    res.send(randomEmoji)
+    res.send({"value of param is": req.params.text})
+    // res.send({message:"all good"})
 })
 
 app.listen(2001)
