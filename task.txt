@@ -1,6 +1,16 @@
-create 3 node modules,
-1 returns random emojie
-2 returns random number
-3 returns random name
+create function which will get number as argumant, and this number defines how many objects should be created.
 
-in app js, make logix so when you run app, you get small user object with random keys, with emojie, age, name
+each object should have this structure:
+
+firstName
+lastName
+jobTitle
+accountNumber
+avatarImage
+vehicleModel
+locationCity
+currentDate
+Link https://v9.fakerjs.dev/api/ by Andrius Kasovskis
+Andrius Kasovskis
+10:04 AM
+https://v9.fakerjs.dev/api/
