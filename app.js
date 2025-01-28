@@ -1,17 +1,10 @@
-const animalName = require("random-animal-name");
-const randomCatImage = require("random-cat-img")
+const express = require("express");
+const app = express();
 
-function getAnimalName() {
-    const name = animalName();
-    console.log(name)
-}
+app.get("/some", (req, res) => {
+    console.log("labas");
+    res.send({message: "all good"})
+})
 
-getAnimalName();
-
-function getRandomCatImg() {
-    randomCatImage().then(catImg => {
-        console.log(catImg.message);
-    });
-}
-
-getRandomCatImg()
+app.listen(2001)
+console.log("server run")
