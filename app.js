@@ -1,9 +1,16 @@
 const express = require("express");
 const app = express();
+const getEmoji = require("./modules/emojiList");
 
 app.get("/some", (req, res) => {
-    console.log("labas");
-    res.send({message: "all good"})
+    function getRandomEmoji() {
+        const emojiList = getEmoji();
+        const randomIndex = Math.floor(Math.random() * emojiList.length);
+        return emojiList[randomIndex];
+    }
+    const randomEmoji = getRandomEmoji();
+
+    res.send(randomEmoji)
 })
 
 app.listen(2001)
