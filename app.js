@@ -1,17 +1,25 @@
-// Jei pradedi naują projektą su modernia ES6 sintakse ir gali pakeisti package.json, naudok import. Jei dirbi su senesniu kodu, greičiausiai vis dar reikės require.
-// biblioteka yra kazkieno kito sukurtas modulis  https://www.npmjs.com/
-const carInfo = require("./modules/carInfo");
-const getCatImage = require("./modules/catImage")
-const getAnimalName = require("./modules/animalName");
-const getLocation = require("./modules/location");
+const express = require("express");
+const app = express();
+
+//route
+app.get("/some", (req, res) => {
+    console.log("sdfsaf");
+    // res.send({success: true,});
+    res.send({message: "all good",});
+});
+
+// kaip pasiimti name -> req.params.name
+app.get("/info/:name", (req, res) => {
+    const username = req.params.name
+    console.log(req.params.name);
+    // res.send({success: true,});
+    res.send({message: "value of param is " + username,});
+});
+app.get("/data", (req, res) => {
+    console.log("sfsfd");
+    res.send({message: "fghdfh"});
+});
 
 
-async function getFaker() {
-    const catImg = await getCatImage();
-    const animalName = getAnimalName();
-    const location = getLocation();
-    console.log(`My cat name is ${animalName} ,we live in ${location}, here is image of my cat: ${catImg}`)
-}
-
-getFaker()
-
+app.listen(2002);
+console.log("server run 2002")

@@ -1,12 +1,4 @@
-create 3 modules.
+2.make it possible to send param to back end and return user string with this param, like that: "value of param is -PARAM VALUE-"
 
-1 module will get random cat image from
-https://www.npmjs.com/package/random-cat-img
+1. make this logic: from browser you send request to server, server should respond with random emojie
 
-2 module will get name for animal using faker
-
-3 module will get location from faker
-
-connect all of these modules in app js, and make output to be string which gets values from objects you got from modules. Something like:
-
-"My cat name is -NAME- ,we live in -CITY-, here is image of my cat: -IMAGE URL-"
