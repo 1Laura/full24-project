@@ -14,8 +14,9 @@ function runRandomAnimalName() {
 runRandomAnimalName();
 
 function randomCatImages() {
-    const randomCat = getRandomCat().then(data => console.log(data.message));
-    console.log(randomCat);
+    getRandomCat().then(data => {
+        console.log(data)
+    })
 }
 
 randomCatImages()
