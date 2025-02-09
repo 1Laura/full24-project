@@ -1,14 +1,12 @@
-create function which will get number as argumant, and this number defines how many objects should be created.
+create 3 modules.
 
-each object should have this structure:
+1 module will get random cat image from
+https://www.npmjs.com/package/random-cat-img
 
-firstName
-lastName
-jobTitle
-accountNumber
-avatarImage
-vehicleModel
-locationCity
-currentDate
-Link https://v9.fakerjs.dev/api/
-https://v9.fakerjs.dev/api/
+2 module will get name for animal using faker
+
+3 module will get location from faker
+
+connect all of these modules in app js, and make output to be string which gets values from objects you got from modules. Something like:
+
+"My cat name is -NAME- ,we live in -CITY-, here is image of my cat: -IMAGE URL-"
