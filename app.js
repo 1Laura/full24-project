@@ -1,32 +1,13 @@
 const express = require("express");
 // Jei pradedi naują projektą su modernia ES6 sintakse ir gali pakeisti package.json, naudok import. Jei dirbi su senesniu kodu, greičiausiai vis dar reikės require.
-const app = express();
 // biblioteka yra kazkieno kito sukurtas modulis  https://www.npmjs.com/
-const animalName = require("random-animal-name");
-const getRandomCat = require("random-cat-img");
+const getFakerData = require("@faker-js/faker");
 
 
-function runRandomAnimalName() {
-    const randomName = animalName();
-    console.log(randomName);
+function getFaker() {
+
+    console.log(getFakerData.faker.person.firstName());
 }
 
-runRandomAnimalName();
+getFaker()
 
-function randomCatImages() {
-    getRandomCat().then(data => {
-        console.log(data)
-    })
-}
-
-randomCatImages()
-
-// app.get("/info/:text", (req, res) => {
-//     console.log(req.params.text)
-//
-//     res.send({"value of param is": req.params.text})
-//     // res.send({message:"all good"})
-// })
-//
-// app.listen(2001)
-// console.log("server run")
