@@ -10,7 +10,5 @@ avatarImage
 vehicleModel
 locationCity
 currentDate
-Link https://v9.fakerjs.dev/api/ by Andrius Kasovskis
-Andrius Kasovskis
-10:04 AM
+Link https://v9.fakerjs.dev/api/
 https://v9.fakerjs.dev/api/
