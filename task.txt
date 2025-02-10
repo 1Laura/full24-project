@@ -1,9 +1,7 @@
-3. create two routes:
-   1) receives username as param, add ID key, using faker gets user lastName email and IP and saves all object it to array of users (in global scope).
-   2) responds with array of users
-   3) add one more route which will delete user by id provided
+create backend logic:
+1) user should be able to register. user provides username and password;
+2) on registration respond success message or error message;
+3) if user with same name exists, do not let register;
 
-2.make it possible to send param to back end and return user string with this param, like that: "value of param is -PARAM VALUE-"
-
-1. make this logic: from browser you send request to server, server should respond with random emojie
-
+When user registers, let him login/
+user should provide username and password, if username and password correct, return whole user object as response, if not correct, write error message, what is wrong (for example: bad username)
