@@ -1,3 +1,8 @@
+3. create two routes:
+   1) receives username as param, using faker gets user lastName email and IP and saves all object it to array of users (in global scope).
+   2) responds with array of users
+   3) when createing user object add ID key to it, also add one more route which will delete user by id provided
+
 2.make it possible to send param to back end and return user string with this param, like that: "value of param is -PARAM VALUE-"
 
 1. make this logic: from browser you send request to server, server should respond with random emojie
