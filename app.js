@@ -2,7 +2,8 @@ const express = require("express");
 const app = express();
 const {faker, fa} = require("@faker-js/faker");
 
-const users = [];
+let users = [];
+
 //routes
 app.get("/create/:name", (req, res) => {
     const user = {
@@ -12,14 +13,24 @@ app.get("/create/:name", (req, res) => {
         email: faker.internet.email(),
         ipAddress: faker.internet.ip(),
     };
-
     users.push(user)
     console.log(users)
     res.send({message: `user created ${user.id}, ${user.name} ${user.lastName}, ${user.email}, ${user.ipAddress}`});
 })
 
 app.get("/usersList", (req, res) => {
+
     res.send({users});//duomenys siunciami objekte
+});
+app.get("/remove/:id", (req, res) => {
+    const id = req.params.id;
+    const userExists = users.find(user => user.id === id);
+    if(!userExists){
+       return   res.send({message: "User doesn't exist"});
+    }
+    users = users.filter(user => user.id !== id)
+    res.send({message: "User deleted"});
+
 });
 
 
