@@ -1,0 +1,13 @@
+{
+  "name": "full24-project",
+  "version": "1.0.0",
+  "description": "",
+  "homepage": "https://github.com/1Laura/full24-project#readme",
+  "bugs": {
+    "url": "https://github.com/1Laura/full24-project/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/1Laura/full24-project.git"
+  }
+}
