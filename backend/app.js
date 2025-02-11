@@ -8,7 +8,7 @@ app.use(cors());
 //     origin:"http://localhost:3001/"
 // }));
 
-app.use(express.json())//sitas nustatymas leidzia pasiimi duomenis is req.body
+app.use(express.json())//sitas nustatymas leidzia pasiimi duomenis is req.body(is post metodo)
 
 app.post("/user", (req, res) => {
     console.log(req.body)
