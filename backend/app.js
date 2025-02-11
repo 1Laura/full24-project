@@ -1,6 +1,6 @@
 const express = require("express");
 const app = express();
-const {faker, fa} = require("@faker-js/faker");
+const {faker} = require("@faker-js/faker");
 
 let users = [];
 

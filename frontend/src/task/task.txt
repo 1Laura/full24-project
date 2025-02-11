@@ -1,0 +1,45 @@
+Make user register and login app
+ 
+REGISTRATION
+on registration user provides his username and two passwords, make shure passwords match, and are not too long or not too short.
+Also on registration check if user with same username does not already exist, if so, do not let user to register
+registration errors and validations should be shown under registration inputs form.
+Also on registration add default image to user object (just some random url)
+On registration just save user to users array in zustand
+ 
+LOGIN
+in login user provides username and password, by username and password check if this user exists in zustand store. If yes, get this user object and save to "currentUser" in zustand.
+Also navigate to "/profile" page
+ 
+PROFILE
+in this page you can see own user information (take it from zustand "currentUser"). Also make it possible to change user image by providing new url
+ 
+USERS-LIST
+in this page just show list of registered user, show only their names and photos (No passwords of course)
+
+Registracija:
+jei nera uzregistruotas, nera zustand array, ideti i array
+error parasyti jei kazkas negerai
+
+Login:
+pagal username ir pass, yra array, jei nera parasyti error
+
+Profile:
+prisijungiant issisaugoti current user objekta, imesti i zustanda userio objekta
+
+Logout:
+isimti current user is zustando nunaviguoti i login ar register
+
+make it possible to create posts, show posts in separate page, also make it possible to write comments on posts, but only if user is logged in
+
+make it possible to like other users posts. Post can be liked only if user logged in and single post can be liked by single user only once
+
+make logic:
+so it is possible to delete own comments
+
+to delete own posts
+
+to delete own profile (on profile deletion ask for user password, when deleting profile delete all user data, all posts, and comments, and likes)
+
+Chat:
+users lists, jei esu prisijunges ir esu useriu sarase galiu issiusti useriui zinute (gal modalas ar pan). Tarp conversation atsiranda zinutes. Conversations array su objektais su partisipants ir messages.

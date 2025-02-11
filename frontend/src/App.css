@@ -1,0 +1,54 @@
+@import 'bootstrap/dist/css/bootstrap.min.css';
+
+.container {
+    padding: 20px;
+    margin-bottom: 30px;
+}
+
+.card {
+    max-height: fit-content;
+    width: 300px;
+    border: 1px solid #6a6a6a;
+    border-radius: 5px;
+    justify-items: center;
+}
+
+.user-card {
+    width: 142px;
+    border: 1px solid #6a6a6a;
+    border-radius: 5px;
+    justify-items: center;
+    margin: 5px;
+}
+
+.user-card img {
+    width: 140px;
+    border-radius: 5px;
+}
+
+.post-card {
+    width: 162px;
+    border: 1px solid #6a6a6a;
+    border-radius: 5px;
+    justify-items: center;
+    margin: 5px;
+}
+
+.post-card img {
+    width: 160px;
+    border-radius: 5px;
+}
+
+
+.user-name {
+    cursor: pointer;
+}
+
+.user-name:hover {
+    letter-spacing: 2px;
+    transition: letter-spacing 0.3s ease;
+}
+
+input {
+    margin: 5px;
+}
