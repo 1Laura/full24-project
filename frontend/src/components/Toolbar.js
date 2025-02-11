@@ -14,7 +14,6 @@ const Toolbar = () => {
                 {currentUser && logUser && <Link to="/profile" className="p-2">Profile</Link>}
                 {currentUser && logUser && <button onClick={() => logoutUser(navigate)}>Logout</button>}
                 {currentUser && logUser && <span className="px-3">{currentUser.username}</span>}
-
             </div>
         </div>
     );
