@@ -1,15 +1,29 @@
 import React from 'react';
-import useColorStore from "../store/main";
+import useUserStore from "../store/main";
 
 const Component1 = () => {
-    const color = useColorStore((state) => state.color);
-    // const {color, darKazkasGaliButi} = useStore((state) => state);
+    const username = useUserStore((state) => state);
+
+    function sendUser() {
+        const user = {
+            username: "Laura",
+            age: 40,
+        }
+        const options = {
+            method: "POST",
+            headers: {"content-type": "application/json"},
+            body: JSON.stringify(user),
+        }
+        fetch("http://localhost:2001/user", options)
+            .then(response => response.json())
+            .then(data => {
+                console.log(data)
+            })
+    }
 
     return (
         <div className="flex flex-col items-center p-4">
-            <h2 className="text-xl">Selected Color</h2>
-            <div className="color-box rounded-full mt-2" style={{backgroundColor: color}}/>
-            <p className="mt-2 font-bold">{color}</p>
+            <button onClick={sendUser}>Send User</button>
         </div>
     );
 };
