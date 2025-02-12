@@ -9,11 +9,12 @@ app.use(cors());
 // }));
 
 app.use(express.json())//sitas nustatymas leidzia pasiimi duomenis is req.body(is post metodo)
-
-app.post("/user", (req, res) => {
+const posts = [];
+app.post("/create", (req, res) => {
     console.log(req.body)
-    res.send({ok: "ok"})
+    posts.push(req.body);
+    res.send({message: "Post created"})
 })
 
-app.listen(2001);
-console.log("server run 2001")
+app.listen(2002);
+console.log("server run 2002")

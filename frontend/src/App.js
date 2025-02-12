@@ -1,17 +1,18 @@
 import 'bootstrap/dist/css/bootstrap.css';
 import './App.css';
-import Component1 from "./components/Component1";
-import Component2 from "./components/Component2";
+import {BrowserRouter, Route, Routes} from "react-router-dom";
+import IndexPage from "./pages/IndexPage";
+import CreatePage from "./pages/CreatePage";
 
 function App() {
     return (
         <div className="container-fluid d-flex p-5">
-            <div className="flex-grow-1">
-                <Component1/>
-            </div>
-            <div className="flex-grow-1">
-                <Component2/>
-            </div>
+            <BrowserRouter>
+                <Routes>
+                    <Route path="/" element={<IndexPage/>}></Route>
+                    <Route path="/create" element={<CreatePage/>}></Route>
+                </Routes>
+            </BrowserRouter>
         </div>
     );
 }
