@@ -20,11 +20,14 @@ const CreatePage = () => {
             .then(response => response.json())
             .then(data => {
                 console.log(data)
+                titleRef.current.value = "";
+                imageRef.current.value = "";
             });
     }
 
     return (
         <div className="container">
+            <h2>Create Post</h2>
             <input type="text" placeholder="Enter title" ref={titleRef}/>
             <input type="text" placeholder="Enter image url" ref={imageRef}/>
             <button onClick={create}>Create</button>
