@@ -1,5 +1,6 @@
 import React, {useRef} from 'react';
 
+
 const CreatePage = () => {
     const titleRef = useRef();
     const imageRef = useRef();

@@ -1,6 +1,9 @@
 import React from 'react';
+import {useNavigate} from "react-router-dom";
 
 const SinglePost = ({userPost}) => {
+    const navigate = useNavigate();
+
     function deletePost() {
         const deletePostInfo = {
             id: userPost.id,
@@ -14,12 +17,12 @@ const SinglePost = ({userPost}) => {
             body: JSON.stringify(deletePostInfo),
         };
 
-        fetch("http://167.99.138.67:1111/deletepost", option)
+        fetch("http://localhost:2002/deletepost" + userPost.id, option)
             .then(response => response.json())
             .then(data => {
                 if (data.success) {
                     if (location.pathname === "/") {
-                        removePost(postInfo.id)
+                        deletePost(postInfo.id)
                     } else {
                         navigate("/")
                     }
