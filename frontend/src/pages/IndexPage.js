@@ -1,5 +1,6 @@
 import React, {useEffect, useState} from 'react';
 import http from "../plugins/https";
+import SinglePost from "../components/SinglePost";
 
 const IndexPage = () => {
     const [allPosts, setAllPosts] = useState([]);
@@ -14,15 +15,13 @@ const IndexPage = () => {
 
 
     return (
-        <div className="container d-flex">
-            <h3>Index page</h3>
-            {allPosts.map((post, index) =>
-                <div className="post-card flex-wrap" key={index}>
-                    <img src={post.imageUrl} alt=""/>
-                    <p>{post.title}</p>
-                </div>
-            )}
-
+        <div className="container">
+            <h3>All posts</h3>
+            <div className=" d-flex">
+                {allPosts.map((post, index) =>
+                    <SinglePost key={index} userPost={post}/>
+                )}
+            </div>
         </div>
     );
 };
