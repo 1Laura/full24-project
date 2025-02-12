@@ -8,8 +8,7 @@ app.use(cors());
 // }));
 app.use(express.json())//sitas nustatymas leidzia pasiimi duomenis is req.body(is post metodo)
 
-
-const posts = [];
+let posts = [];
 app.post("/create", (req, res) => {
     console.log(req.body)
     posts.push(req.body);
@@ -19,6 +18,16 @@ app.post("/create", (req, res) => {
 app.get("/posts", (req, res) => {
     res.send({posts})
 })
+
+app.post("/deletePost/:postId", (req, res) => {
+    const deletePostId = req.params.postId;
+    const postExists = posts.find(post => post.id === deletePostId);
+    if (!postExists) {
+        return res.send({message: "Post doesn't exist"});
+    }
+    posts = posts.filter(post => post.id === deletePostId)
+    res.send({message: "Post deleted"})
+});
 
 app.listen(2002);
 console.log("server run 2002")

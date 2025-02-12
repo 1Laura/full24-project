@@ -3,3 +3,5 @@ create two pages in react.
 in one page you create post by sending title and image url to back end through POST request (save it in back array of posts)
 
 in second page you send get request using useEffect, so when page opens, you see list of posts from back end (in back create app.get to respond with array of posts)
+
+update you current application, make it possible to delete post. USe get request with dynamic param, also when creating post, add to its object unique id
