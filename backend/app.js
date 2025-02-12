@@ -12,11 +12,11 @@ let posts = [];
 app.post("/create", (req, res) => {
     const postItem = {
         ...req.body,//spred operatorius
-        postId: uid(),
+        id: uid(),
     }
-    console.log(req.body)
-    posts.push(req.body);
-    res.send({message: "Post created"})
+    // console.log(req.body)
+    posts.push(postItem);
+    res.send({message: "Post created", posts})
 });
 
 app.get("/posts", (req, res) => {
@@ -24,14 +24,14 @@ app.get("/posts", (req, res) => {
     res.send({posts})
 })
 
-app.post("/deletePost/:postId", (req, res) => {
-    const deletePostId = req.params.postId;
-    const postExists = posts.find(post => post.id === deletePostId);
+app.get("/delete/:id", (req, res) => {
+    const id = req.params.id;
+    const postExists = posts.find(post => post.id === id);
     if (!postExists) {
         return res.send({message: "Post doesn't exist"});
     }
-    posts = posts.filter(post => post.id === deletePostId)
-    res.send({message: "Post deleted"})
+    posts = posts.filter(post => post.id !== id)
+    res.send({message: "Post deleted", posts})
 });
 
 app.listen(2002);
