@@ -6,7 +6,7 @@ const CreatePage = () => {
     const imageRef = useRef();
 
     function create() {
-        const data = {
+        const post = {
             title: titleRef.current.value,
             imageUrl: imageRef.current.value,
         };
@@ -15,21 +15,18 @@ const CreatePage = () => {
             headers: {
                 "content-type": "application/json"
             },
-            body: JSON.stringify(data),
+            body: JSON.stringify(post),
         };
         fetch("http://localhost:2002/create", options)
-            .then(response => {
-                if (response.status !== 200) {
-                    console.log("Error from frontend")
-                } else {
-                    return response.json()
-                }
-            })
+            .then(response => response.json())
             .then(data => {
-                // console.log(data)
-                titleRef.current.value = "";
-                imageRef.current.value = "";
+                if (data.error) {
+                    return console.log("bad error from frontend")
+                }
+                console.log(data)
             });
+        titleRef.current.value = "";
+        imageRef.current.value = "";
     }
 
     return (

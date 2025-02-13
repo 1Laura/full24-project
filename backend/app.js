@@ -11,7 +11,7 @@ app.use(express.json())//sitas nustatymas leidzia pasiimi duomenis is req.body(i
 let posts = [];
 app.post("/create", (req, res) => {
 
-    if (!("image" in req.body)) {//jei objekte yra keysas "image"
+    if (!("imageUrl" in req.body)) {//jei objekte yra keysas "image"
         return res.status(400).send({message: "no image in body", error: true});//https://developer.mozilla.org/en-US/docs/Web/HTTP/Status
     }
     if (!("title" in req.body)) {
@@ -24,7 +24,7 @@ app.post("/create", (req, res) => {
     }
     // console.log(req.body)
     posts.push(postItem);
-    res.send({message: "Post created", posts, error: false})
+    res.send({message: "Post created", error: false})
 });
 
 app.get("/posts", (req, res) => {
