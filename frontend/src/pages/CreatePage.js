@@ -21,7 +21,7 @@ const CreatePage = () => {
             .then(response => response.json())
             .then(data => {
                 if (data.error) {
-                    return console.log("bad error from frontend")
+                    return console.log(data.error)
                 }
                 console.log(data)
             });

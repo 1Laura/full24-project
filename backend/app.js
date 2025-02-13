@@ -10,13 +10,19 @@ app.use(express.json())//sitas nustatymas leidzia pasiimi duomenis is req.body(i
 
 let posts = [];
 app.post("/create", (req, res) => {
-
+    // validacijos
     if (!("imageUrl" in req.body)) {//jei objekte yra keysas "image"
         return res.status(400).send({message: "no image in body", error: true});//https://developer.mozilla.org/en-US/docs/Web/HTTP/Status
     }
     if (!("title" in req.body)) {
         return res.status(400).send({message: "no title in body", error: true});
     }
+    if (req.body.title.length > 100) {
+        return res.status(400).send({message: "title too long", error: true});
+    }
+    if (!req.body.imageUrl.includes("http")) return res.status(400).send({message: "bad image link", error: true});
+
+    if (Object.keys(req.body).length > 2) return res.status(400).send({message: "object have too many keys", error: true});
 
     const postItem = {
         ...req.body,//spred operatorius
