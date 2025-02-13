@@ -1,11 +1,13 @@
 import React from 'react';
 import http from "../plugins/https";
+import useStore from "../store/main";
 
 const SinglePost = ({userPost}) => {
+    const {setPosts} = useStore(state => state);
 
     async function deletePost() {
         const data = await http("http://localhost:2002/delete/" + userPost.id);
-        console.log(data)
+        setPosts(data.posts);
     }
 
     return (

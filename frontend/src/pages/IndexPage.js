@@ -4,7 +4,6 @@ import SinglePost from "../components/SinglePost";
 import useStore from "../store/main";
 
 const IndexPage = () => {
-    // const [allPosts, setAllPosts] = useState([]);
     const {setPosts, posts} = useStore(state => state);
 
     useEffect(() => {
