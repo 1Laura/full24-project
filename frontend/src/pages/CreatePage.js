@@ -18,9 +18,15 @@ const CreatePage = () => {
             body: JSON.stringify(data),
         };
         fetch("http://localhost:2002/create", options)
-            .then(response => response.json())
+            .then(response => {
+                if (response.status !== 200) {
+                    console.log("Error from frontend")
+                } else {
+                    return response.json()
+                }
+            })
             .then(data => {
-                console.log(data)
+                // console.log(data)
                 titleRef.current.value = "";
                 imageRef.current.value = "";
             });
