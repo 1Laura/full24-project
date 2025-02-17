@@ -6,9 +6,9 @@ const SingleUser = ({userInfo}) => {
     const {setUsers} = useStore(state => state);
 
     return (
-        <div className="post-card flex-wrap" key={userInfo.id}>
-            <p>{userInfo.username}</p>
-            <p>{userInfo.age}</p>
+        <div className="post-card flex-wrap" >
+            {/*<p>{userInfo.username}</p>*/}
+            {/*<p>{userInfo.age}</p>*/}
         </div>
     );
 };

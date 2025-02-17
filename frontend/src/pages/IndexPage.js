@@ -1,6 +1,6 @@
 import React, {useEffect} from 'react';
 import http from "../plugins/https";
-import SinglePost from "../components/SinglePost";
+import SinglePost from "../components/SingleUser";
 import useStore from "../store/main";
 
 const IndexPage = () => {
