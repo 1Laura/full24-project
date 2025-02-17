@@ -1,9 +1,12 @@
 import React from 'react';
+import useStore from "../store/main";
 
 const ErrorMessage = () => {
+    const {error} = useStore(state => state);
+    if (!error) return null;
     return (
         <div className="text-center">
-            <p>Bad error</p>
+            <p>{error}</p>
         </div>
     );
 };

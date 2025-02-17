@@ -3,8 +3,11 @@ import './App.css';
 import ErrorMessage from "./components/ErrorMessage";
 import CreateUser from "./components/CreateUser";
 import UsersList from "./components/UsersList";
+import useStore from "./store/main";
 
 function App() {
+    const {error} = useStore(state => state);
+
     return (
         // <BrowserRouter>
         //     <Toolbar/>
@@ -16,7 +19,7 @@ function App() {
 
         <div className="container">
             <div>
-                <ErrorMessage/>
+                {error && <ErrorMessage/>}
             </div>
             <div className="d-flex">
 

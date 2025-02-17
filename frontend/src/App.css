@@ -39,7 +39,6 @@
     border-radius: 5px;
 }
 
-
 .user-name {
     cursor: pointer;
 }
@@ -49,6 +48,6 @@
     transition: letter-spacing 0.3s ease;
 }
 
-input {
-    margin: 5px;
+input, select {
+    width:220px;
 }

@@ -8,45 +8,49 @@ app.use(cors());
 // }));
 app.use(express.json())//sitas nustatymas leidzia pasiimi duomenis is req.body(is post metodo)
 
-let posts = [];
+let users = [];
 app.post("/create", (req, res) => {
     // validacijos
-    if (!("imageUrl" in req.body)) {//jei objekte yra keysas "image"
-        return res.status(400).send({message: "no image in body", error: true});//https://developer.mozilla.org/en-US/docs/Web/HTTP/Status
-    }
-    if (!("title" in req.body)) {
-        return res.status(400).send({message: "no title in body", error: true});
-    }
-    if (req.body.title.length > 100) {
-        return res.status(400).send({message: "title too long", error: true});
-    }
-    if (!req.body.imageUrl.includes("http")) return res.status(400).send({message: "bad image link", error: true});
 
-    if (Object.keys(req.body).length > 2) return res.status(400).send({message: "object have too many keys", error: true});
+    const {username, age, gender, race} = req.body;//issitraukiu keyssus is objekto
 
-    const postItem = {
-        ...req.body,//spred operatorius
-        id: uid(),
-    }
+    let error = null;
+    console.log(req.body)
+    if (typeof username === "string" && username.length > 0 && username[0] !== username[0].toUpperCase()) error = "username should start with upper case letter";
+    if (username.length > 20 || username.length < 4) error = "username min 4, max 20 length";
+
+    if (Number(age) < 18 || Number(age) > 80) error = "age must be more than 18 and less than 80";
+
+    if (gender !== "male" && gender !== "female") error = "gender can be male, or female";
+    // if (race === "asian") error = "asian are not allowed here, for now";
+
+    if (race !== "european" && race !== "african" && race !== "indian") error = "european, african, indian allowed";
+
+    if (error) return res.send({message: error, error: true})
+
+    // const userItem = {
+    //     ...req.body,//spred operatorius
+    //     id: uid(),
+    // }
     // console.log(req.body)
-    posts.push(postItem);
-    res.send({message: "Post created", error: false})
+    users.push({username, age, gender, race});
+    res.send({message: "User created", error: false, users})
 });
 
-app.get("/posts", (req, res) => {
-    // console.log(uid.uid(20))//nustatau id ilgi, pasitikrinu ar veikia
-    res.send({posts})
-})
+// app.get("/posts", (req, res) => {
+//     // console.log(uid.uid(20))//nustatau id ilgi, pasitikrinu ar veikia
+//     res.send({posts})
+// })
+//
+// app.get("/delete/:id", (req, res) => {
+//     const id = req.params.id;
+//     const postExists = posts.find(post => post.id === id);
+//     if (!postExists) {
+//         return res.send({message: "Post doesn't exist"});
+//     }
+//     posts = posts.filter(post => post.id !== id)
+//     res.send({message: "Post deleted", posts})
+// });
 
-app.get("/delete/:id", (req, res) => {
-    const id = req.params.id;
-    const postExists = posts.find(post => post.id === id);
-    if (!postExists) {
-        return res.send({message: "Post doesn't exist"});
-    }
-    posts = posts.filter(post => post.id !== id)
-    res.send({message: "Post deleted", posts})
-});
-
-app.listen(2002);
-console.log("server run 2002")
+app.listen(2001);
+console.log("server run 2001")

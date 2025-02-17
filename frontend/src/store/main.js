@@ -5,7 +5,6 @@ const useStore = create((set) => ({
     users: [],
 
     setUsers:(users)=>set({users}),
-
     setError: (newError) => set({error: newError}),
 }));
 

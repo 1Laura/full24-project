@@ -24,5 +24,8 @@
     "random-animal-name": "^0.1.1",
     "random-cat-img": "^1.1.7",
     "uid": "^2.0.2"
+  },
+  "devDependencies": {
+    "nodemon": "^3.1.9"
   }
 }
