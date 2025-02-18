@@ -45,5 +45,9 @@ module.exports = {
         console.log(users)
         res.send({message: "User logged in", error: false})
     },
+    getAllUsers: (req, res) => {
+        console.log(users)
+        res.send({message: "send all users", users})
+    }
 
 }

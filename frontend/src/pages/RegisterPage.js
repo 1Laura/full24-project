@@ -1,7 +1,9 @@
 import React, {useRef} from 'react';
 import useStore from "../store/main";
+import {useNavigate} from "react-router-dom";
 
 const RegisterPage = () => {
+    const navigate = useNavigate();
     const {setUsers, setError} = useStore(state => state);
 
     const refs = {
@@ -25,10 +27,12 @@ const RegisterPage = () => {
         fetch("http://localhost:2001/register", options)
             .then(response => response.json())
             .then(data => {
+                console.log(data)
                 if (data.error) {
                     return setError(data.message)
                 }
                 setUsers(data.users);
+                navigate("/login")
             })
     }
 

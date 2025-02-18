@@ -4,9 +4,17 @@ import SingleUser from "../components/SingleUser";
 import http from "../plugins/https"
 
 const UsersListPage = () => {
-    const {users} = useStore(state => state);
+    const {setUsers, users} = useStore(state => state);
 
-       return (
+    useEffect(() => {
+        http("http://localhost:2001/allUsers")
+            .then(data => {
+                console.log(data)
+                setUsers(data.users);
+            })
+    }, []);
+
+    return (
         <div className="container">
             <h2>users list</h2>
             <div className="d-flex flex-wrap">

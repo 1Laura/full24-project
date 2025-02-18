@@ -40,7 +40,7 @@ const LoginPage = () => {
             <div className="d-block">
                 <input type="text" className="d-block m-2" placeholder="Enter username" ref={refs.username}/>
                 <input type="password" className="d-block m-2" placeholder="Enter password" ref={refs.password1}/>
-                <button onClick={loginUser} className="d-block m-2">Register user</button>
+                <button onClick={loginUser} className="d-block m-2">Login</button>
             </div>
         </div>
     );
