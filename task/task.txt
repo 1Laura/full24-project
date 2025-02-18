@@ -1,19 +1,10 @@
-validations in back end:
-username should start with upperCase letter
-username should be min 4 max 20 length
+on user registration check if same username is not occupied, also on success registration add secretKey to user object
  
-age should be min 18 max 80 
+on user login (when good username and password provided) send user secretKey to front end
  
-gender could be two options:
-male, female
+when user pokes other user send request to back end with user to poke username and own secretKey, by secret key you will find your user in users array and create records that you poked someone.
  
-race could be:
-europe, african, asian, indian
+in user profile send secretKey to back end with (/getnotifications) request, to get notifications about who poked you
  
-(if race is other than mentioned, show error, also if race is asian selected, send message that asians is not allowed to use this application)
+i do recommend to create separate array of notifications list in back end
  
-on each validations server should send error to front end, in front end you should show error to user, so it is clear what is wrong and what to change
-
-make input with error to light up (red color or any other), so user would know which field was wrong, if all fields wrong, highlight all.
-
-it will be easy if validations for inputs highlight will be done in front end. So front and back has same validations

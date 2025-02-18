@@ -1,0 +1,19 @@
+validations in back end:
+username should start with upperCase letter
+username should be min 4 max 20 length
+ 
+age should be min 18 max 80 
+ 
+gender could be two options:
+male, female
+ 
+race could be:
+europe, african, asian, indian
+ 
+(if race is other than mentioned, show error, also if race is asian selected, send message that asians is not allowed to use this application)
+ 
+on each validations server should send error to front end, in front end you should show error to user, so it is clear what is wrong and what to change
+
+make input with error to light up (red color or any other), so user would know which field was wrong, if all fields wrong, highlight all.
+
+it will be easy if validations for inputs highlight will be done in front end. So front and back has same validations
