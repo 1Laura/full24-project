@@ -1,8 +1,10 @@
 import React, {useRef} from 'react';
 import {useNavigate} from "react-router-dom";
+import useStore from "../store/main";
 
 const LoginPage = () => {
     const navigate = useNavigate();
+    const {setError, setCurrentUser} = useStore(state => state);
 
     const refs = {
         username: useRef(),
@@ -10,8 +12,26 @@ const LoginPage = () => {
     };
 
     function loginUser() {
-        console.log("sfasf")
-        navigate("/userslist")
+        const user = {
+            username: refs.username.current.value.trim(),
+            password1: refs.password1.current.value,
+        };
+        const options = {
+            method: "POST",
+            headers: {"content-type": "application/json"},
+            body: JSON.stringify(user)
+        };
+
+        fetch("http://localhost:2001/login", options)
+            .then(response => response.json())
+            .then(data => {
+                console.log(data)
+                if (data.error) {
+                    return setError(data.message)
+                }
+                setCurrentUser({username: user.username, secretKey: data.secretKey});
+                navigate("/users");
+            })
     }
 
     return (

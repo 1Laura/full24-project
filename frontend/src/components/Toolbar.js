@@ -6,7 +6,7 @@ const Toolbar = () => {
         <div className="m-3 d-flex">
             <Link to="/login" className="p-2">Login</Link>
             <Link to="/register" className="p-2">Register</Link>
-            <Link to="/userslist" className="p-2">Users list</Link>
+            <Link to="/users" className="p-2">Users list</Link>
         </div>
     );
 };

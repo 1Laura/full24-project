@@ -12,7 +12,7 @@ const RegisterPage = () => {
 
     function registerUser() {
         const user = {
-            username: refs.username.current.value,
+            username: refs.username.current.value.trim(),
             password1: refs.password1.current.value,
             password2: refs.password2.current.value
         };

@@ -1,14 +1,13 @@
-import React, {useEffect} from 'react';
-import useStore from "../store/main";
+import React from 'react';
 import SingleUser from "../components/SingleUser";
-import http from "../plugins/https"
+import useStore from "../store/main";
 
-const UsersListPage = () => {
-    const {users} = useStore(state => state);
+const UserProfilePage = () => {
+    const {users} = useStore(state => state)
 
-       return (
+    return (
         <div className="container">
-            <h2>users list</h2>
+            <h2>User profile page</h2>
             <div className="d-flex flex-wrap">
                 {users.map((user, index) =>
                     <SingleUser key={index} userInfo={user}/>
@@ -18,4 +17,4 @@ const UsersListPage = () => {
     );
 };
 
-export default UsersListPage;
+export default UserProfilePage;

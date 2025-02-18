@@ -5,7 +5,7 @@ import RegisterPage from "./pages/RegisterPage";
 import {BrowserRouter, Route, Routes} from "react-router-dom";
 import Toolbar from "./components/Toolbar";
 import UsersListPage from "./pages/UsersListPage";
-import SingleUserPage from "./pages/SingleUserPage";
+import UserProfilePage from "./pages/UserProfilePage";
 
 function App() {
     return (
@@ -15,8 +15,8 @@ function App() {
                 <Route path="/" element={<LoginPage/>}></Route>
                 <Route path="/login" element={<LoginPage/>}></Route>
                 <Route path="/register" element={<RegisterPage/>}></Route>
-                <Route path="/userslist" element={<UsersListPage/>}></Route>
-                <Route path="/userslist:username" element={<SingleUserPage/>}></Route>
+                <Route path="/users" element={<UsersListPage/>}></Route>
+                <Route path="/users/:username" element={<UserProfilePage/>}></Route>
             </Routes>
         </BrowserRouter>
     );

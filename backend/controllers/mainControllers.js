@@ -23,9 +23,14 @@ module.exports = {
             return res.send({message: "don't match password", error: true});
         }
 
-        users.push(req.body);
+        const user = {
+            username,
+            password1,
+            secretKey: uid()
+        }
+        users.push(user);
         console.log(users);
-        res.send({message: "User created", error: false, users});
+        res.send({message: "User created", error: false, secretKey: userExists.secretKey});
     },
 
     getUser: (req, res) => {
@@ -33,16 +38,12 @@ module.exports = {
         let error = null;
         //some() – grąžina true, jei bent vienas masyvo elementas atitinka sąlygą.
         const userExists = users.some(user => user.username === username && user.password1 === password1);
-        if(!userExists){
+        if (!userExists) {
             return res.send({message: "don't match user or password", error: true});
         }
-        const user = {
-            ...req.body,
-            secretKey: uid(),
-        }
-        users.push(user);
+
         console.log(users)
-        res.send({message: "User logged in", error: false, users})
+        res.send({message: "User logged in", error: false})
     },
 
 }
