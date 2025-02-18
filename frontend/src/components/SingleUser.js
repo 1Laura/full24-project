@@ -1,16 +1,18 @@
 import React from 'react';
-import http from "../plugins/https";
-import useStore from "../store/main";
 
 const SingleUser = ({userInfo}) => {
-    const {setUsers} = useStore(state => state);
+    function poke() {
+        console.log("poked")
+    }
+    function openProfilePage() {
+        console.log("")
+        // navigate("/profile")
+    }
 
     return (
         <div className="post-card flex-wrap">
-            <p>{userInfo.username}</p>
-            <p>{userInfo.age}</p>
-            <p>{userInfo.gender}</p>
-            <p>{userInfo.race}</p>
+            <p onClick={openProfilePage} className="m-2">{userInfo.username}</p>
+            <button onClick={poke} className="m-2">Poke</button>
         </div>
     );
 };

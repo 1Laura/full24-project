@@ -23,24 +23,26 @@ module.exports = {
             return res.send({message: "don't match password", error: true});
         }
 
+        users.push(req.body);
+        console.log(users);
+        res.send({message: "User created", error: false, users});
+    },
+
+    getUser: (req, res) => {
+        const {username, password1} = req.body;
+        let error = null;
+        //some() – grąžina true, jei bent vienas masyvo elementas atitinka sąlygą.
+        const userExists = users.some(user => user.username === username && user.password1 === password1);
+        if(!userExists){
+            return res.send({message: "don't match user or password", error: true});
+        }
         const user = {
             ...req.body,
             secretKey: uid(),
         }
-
         users.push(user);
-        console.log(users);
-        res.send({message: "User created", error: false, users})
+        console.log(users)
+        res.send({message: "User logged in", error: false, users})
     },
 
-    getUser: (req, res) => {
-        console.log("sdfasfds")
-        res.send({message: "ok"})
-    },
-
-    sendInfo: (req, res) => {
-        console.log("info get")
-        const info = {message: "this is info"}
-        res.send({message: "ok", info})
-    }
 }
