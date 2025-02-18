@@ -6,6 +6,10 @@ module.exports = {
     createUser: (req, res) => {
         const {username, password1, password2} = req.body;
         let error = null;
+        const userExists = users.some(user => user.username === username);
+        if (userExists) {
+            return res.send({message: "Username is already taken", error: true})
+        }
         if (typeof username === "string" && username.length > 0 && username[0] !== username[0].toUpperCase()) {
             return res.send({message: "username should start with upper case letter", error: true})
         }
