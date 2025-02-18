@@ -1,39 +1,25 @@
 import 'bootstrap/dist/css/bootstrap.css';
 import './App.css';
-import ErrorMessage from "./components/ErrorMessage";
-import CreateUser from "./components/CreateUser";
-import UsersList from "./components/UsersList";
-import useStore from "./store/main";
+import LoginPage from "./pages/LoginPage";
+import RegisterPage from "./pages/RegisterPage";
+import {BrowserRouter, Route, Routes} from "react-router-dom";
+import Toolbar from "./components/Toolbar";
+import UsersListPage from "./pages/UsersListPage";
+import SingleUserPage from "./pages/SingleUserPage";
 
 function App() {
-    const {error} = useStore(state => state);
-
     return (
-        // <BrowserRouter>
-        //     <Toolbar/>
-        //     <Routes>
-        //         <Route path="/" element={<IndexPage/>}></Route>
-        //         <Route path="/create" element={<CreatePage/>}></Route>
-        //     </Routes>
-        // </BrowserRouter>
-
-        <div className="container">
-            <div>
-                {error && <ErrorMessage/>}
-            </div>
-            <div className="d-flex">
-
-                <div className="flex-grow-1">
-                    <CreateUser/>
-                </div>
-                <div className="flex-grow-1">
-                    <UsersList/>
-                </div>
-            </div>
-        </div>
-
-    )
-        ;
+        <BrowserRouter>
+            <Toolbar/>
+            <Routes>
+                <Route path="/" element={<LoginPage/>}></Route>
+                <Route path="/login" element={<LoginPage/>}></Route>
+                <Route path="/register" element={<RegisterPage/>}></Route>
+                <Route path="/userslist" element={<UsersListPage/>}></Route>
+                <Route path="/userslist:username" element={<SingleUserPage/>}></Route>
+            </Routes>
+        </BrowserRouter>
+    );
 }
 
 export default App;

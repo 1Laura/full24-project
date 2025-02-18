@@ -3,16 +3,13 @@ const app = express();
 const cors = require("cors");
 const {uid} = require("uid");
 const mainRouter = require("./router/routes");
-
-
-app.use("/", mainRouter);//visos uzklausos keliauja i endpointa
-
-
 app.use(cors());
 // app.use(cors({
 //     origin:"http://localhost:3001/"
 // }));
 app.use(express.json())//sitas nustatymas leidzia pasiimi duomenis is req.body(is post metodo)
+
+app.use("/", mainRouter);//visos uzklausos keliauja i endpointa
 
 // let users = [];
 // app.post("/create", (req, res) => {

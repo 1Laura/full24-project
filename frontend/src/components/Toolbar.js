@@ -4,8 +4,9 @@ import {Link} from "react-router-dom";
 const Toolbar = () => {
     return (
         <div className="m-3 d-flex">
-            <Link to="/" className="p-2">All users</Link>
-            <Link to="/create" className="p-2">Create user</Link>
+            <Link to="/login" className="p-2">Login</Link>
+            <Link to="/register" className="p-2">Register</Link>
+            <Link to="/userslist" className="p-2">Users list</Link>
         </div>
     );
 };
