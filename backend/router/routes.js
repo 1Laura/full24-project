@@ -9,9 +9,19 @@ const {
     pokeUser,
 } = require("../controllers/mainControllers");
 
-router.post("/register", registerUSer)
-router.post("/login", loginUser);
+const {validateUsers, validateUserForLogin} = require("../middleware/validators");
+
+// register new user
+router.post("/register", validateUsers, registerUSer)
+
+// router.post("/register", registerUSer)
+
+// login user
+router.post("/login", validateUserForLogin, loginUser);
+
+// get all users
 router.get("/allUsers", getAllUsers);
-router.get("/poke", pokeUser)
+
+router.post("/poke", pokeUser)
 
 module.exports = router;

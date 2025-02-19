@@ -1,11 +1,11 @@
 import {create} from "zustand";
 
 const useStore = create((set) => ({
-    error: null,
     users: [],
+    error: null,
     currentUser: null,
 
-    setUsers: (users) => set({users}),
+    setUsers: (newUsers) => set({users: newUsers}),
     setError: (newError) => set({error: newError}),
     setCurrentUser: (newCurrentUser) => set({currentUser: newCurrentUser}),
 }));

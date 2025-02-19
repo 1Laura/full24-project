@@ -1,6 +1,6 @@
 import React from 'react';
 import useStore from "../store/main";
-import http from "../plugins/https"
+
 
 const SingleUser = ({userInfo}) => {
     const {setCurrentUser, currentUser, setError} = useStore();
