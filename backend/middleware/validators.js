@@ -1,12 +1,11 @@
 const {uid} = require("uid");
-let users = [];
+const users = [];
 
 module.exports = {
     validateUsers: (req, res, next) => {
         const {username, password1, password2} = req.body;
-        let error = null;
-        const userExists = users.some(user => user.username === username);
-        if (userExists) {
+        // let error = null;
+        if (users.find(user => user.username === username)) {
             return res.send({message: "Username is already taken", error: true})
         }
         if (typeof username === "string" && username.length > 0 && username[0] !== username[0].toUpperCase()) {
@@ -27,8 +26,9 @@ module.exports = {
             secretKey: uid(),
             notifications: []
         }
-        // console.log(users)
         users.push(user);
+        req.users = users;
+        console.log("Naujas vartotojas pridėtas:", user);
         next();
     },
     validateUserForLogin: (req, res, next) => {

@@ -1,15 +1,14 @@
-// controller galutine logika, jei uzklausa be jokiu klaidu
 const {uid} = require("uid");
-
 let users = [];
 
 module.exports = {
-    registerUSer: (req, res) => {
+    registerUser: (req, res) => {
+        users = req.users;
         // const {username, password1, password2} = req.body;
         // let error = null;
-
-        console.log("all users after registration "+users);
-        res.send({message: "User created", error: false});
+        // kaip čia pasiekti users array is validators
+        console.log("all users after registration " + req.body)
+        res.send({message: "User created", error: false, users});
     },
 
     loginUser: (req, res) => {//iš req galiu pasiimti user, ir is jo secretkey

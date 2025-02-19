@@ -1,9 +1,8 @@
 const express = require("express");
 const router = express.Router();
-// const mainController = require("../controllers/mainControllers");
-// router.get("/user", mainController.getUser);
+
 const {
-    registerUSer,
+    registerUser,
     loginUser,
     getAllUsers,
     pokeUser,
@@ -12,9 +11,7 @@ const {
 const {validateUsers, validateUserForLogin} = require("../middleware/validators");
 
 // register new user
-router.post("/register", validateUsers, registerUSer)
-
-// router.post("/register", registerUSer)
+router.post("/register", validateUsers, registerUser)
 
 // login user
 router.post("/login", validateUserForLogin, loginUser);
