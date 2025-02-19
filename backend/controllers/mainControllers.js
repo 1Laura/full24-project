@@ -28,7 +28,7 @@ module.exports = {
             username,
             password1,
             secretKey: uid(),
-            pokes: []
+            notifications: []
         }
         users.push(user);
         // console.log(users);
@@ -55,12 +55,17 @@ module.exports = {
         if (!sender) {
             res.send({message: "Invalid secret key", error: true})
         }
-        ;
         const receiver = users.find(user => user.username === username);
         if (!receiver) {
             res.send({message: "User to poke not found", error: true})
         }
-        users.pokes.push({to: receiver.username, timestamp: new Date()});
+        const notification = {
+            receiver: receiver.username,
+            sender: sender.username,
+            timestamp: new Date()
+        };
+
+        users.notifications.push(notification);
         res.send({message: `${sender.username} poked ${receiver.username}`, error: false});
     }
 

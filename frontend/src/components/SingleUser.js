@@ -28,14 +28,6 @@ const SingleUser = ({userInfo}) => {
                 setCurrentUser({username: user.username, secretKey: data.secretKey});
 
             })
-
-
-        // const res = await http("http://localhost:2001/poke", "POST", {
-        //     secretKey: currentUser.secretKey,
-        //     usernameToPoke: userInfo.username
-        // });
-        //
-        // alert(res.message);
     }
 
     return (

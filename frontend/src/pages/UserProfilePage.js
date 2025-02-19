@@ -9,9 +9,8 @@ const UserProfilePage = () => {
         <div className="container">
             <h2>User profile page</h2>
             <div className="d-flex flex-wrap">
-                {users?.length > 0 ? users.map(user =>
-                    <SingleUser key={user.secretKey} userInfo={user}/>
-                ) : <p>No users found.</p>}
+                <p>You were poked by username</p>
+                <p>time</p>
             </div>
         </div>
     );

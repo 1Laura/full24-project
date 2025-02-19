@@ -9,12 +9,12 @@ const UsersListPage = () => {
     useEffect(() => {
         http("http://localhost:2001/allUsers")
             .then(data => {
+                console.log(data)
                 if (data.users) {
                     setUsers(data.users);
                 } else {
                     setUsers([]); // Fallback to an empty array
                 }
-                console.log(data)
 
             })
     }, []);

@@ -8,7 +8,7 @@ in user profile send secretKey to back end with (/getnotifications) request, to 
  
 i do recommend to create separate array of notifications list in back end
 
-Mane "poke back" logic: in front end where you have list of notifications, who poke you, each item should have button "poke back" to poke that person who poked you back
+Make "poke back" logic: in front end where you have list of notifications, who poke you, each item should have button "poke back" to poke that person who poked you back
 
 make it possible to delete own account, user should confirm deletion with his password, also on delete, remove all pokes which user did to other people and all notification shit from him
 
