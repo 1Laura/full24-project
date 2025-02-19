@@ -3,7 +3,7 @@ const {uid} = require("uid");
 let users = [];
 
 module.exports = {
-    createUser: (req, res) => {
+    registerUSer: (req, res) => {
         const {username, password1, password2} = req.body;
         let error = null;
         const userExists = users.some(user => user.username === username);
@@ -22,18 +22,20 @@ module.exports = {
         if (password1 !== password2) {
             return res.send({message: "don't match password", error: true});
         }
+        ;
 
         const user = {
             username,
             password1,
-            secretKey: uid()
+            secretKey: uid(),
+            pokes: []
         }
         users.push(user);
-        console.log(users);
-        res.send({message: "User created", error: false, secretKey: userExists.secretKey});
+        // console.log(users);
+        res.send({message: "User created", error: false});
     },
 
-    getUser: (req, res) => {
+    loginUser: (req, res) => {
         const {username, password1} = req.body;
         let error = null;
         //some() – grąžina true, jei bent vienas masyvo elementas atitinka sąlygą.
@@ -41,13 +43,25 @@ module.exports = {
         if (!userExists) {
             return res.send({message: "don't match user or password", error: true});
         }
-
-        console.log(users)
-        res.send({message: "User logged in", error: false})
+        res.send({message: "User logged in", error: false, secretKey: userExists.secretKey});
     },
     getAllUsers: (req, res) => {
         console.log(users)
         res.send({message: "send all users", users})
+    },
+    pokeUser: (req, res) => {
+        const {username, secretKey} = req.body;
+        const sender = users.find(user => user.secretKey === secretKey);
+        if (!sender) {
+            res.send({message: "Invalid secret key", error: true})
+        }
+        ;
+        const receiver = users.find(user => user.username === username);
+        if (!receiver) {
+            res.send({message: "User to poke not found", error: true})
+        }
+        users.pokes.push({to: receiver.username, timestamp: new Date()});
+        res.send({message: `${sender.username} poked ${receiver.username}`, error: false});
     }
 
 }
