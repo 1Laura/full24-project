@@ -12,11 +12,12 @@ function App() {
         <BrowserRouter>
             <Toolbar/>
             <Routes>
-                <Route path="/" element={<LoginPage/>}></Route>
+                {/*<Route path="/" element={<LoginPage/>}></Route>*/}
                 <Route path="/login" element={<LoginPage/>}></Route>
                 <Route path="/register" element={<RegisterPage/>}></Route>
                 <Route path="/users" element={<UsersListPage/>}></Route>
                 <Route path="/users/:username" element={<UserProfilePage/>}></Route>
+                <Route path="*" element={<LoginPage />} /> {/* Default route fallback */}
             </Routes>
         </BrowserRouter>
     );

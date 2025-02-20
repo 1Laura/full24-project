@@ -39,7 +39,6 @@ module.exports = {
         if (!userExists) {
             return res.send({message: "don't match user or password", error: true});
         }
-
         req.user = userExists;//issaugau user, kad galeciau pasiimti controllery
         next();
     }

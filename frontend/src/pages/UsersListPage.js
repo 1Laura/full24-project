@@ -10,7 +10,7 @@ const UsersListPage = () => {
     useEffect(() => {
         (async () => {
             await new Promise(resolve => setTimeout(resolve, 500));
-            const response = await fetch("http://localhost:2001/allUsers");
+            const response = await fetch("http://localhost:2001/getallusers");
             const data = await response.json();
             console.log("is users list pasge "+data);
             if (data.users) {

@@ -1,17 +1,29 @@
-import React from 'react';
-import SingleUser from "../components/SingleUser";
+import React, {useEffect} from 'react';
 import useStore from "../store/main";
+import NotificationItem from "../components/NotificationItem";
 
 const UserProfilePage = () => {
-    const {users} = useStore(state => state)
-
+    const {currentUser, notifications, setNotifications} = useStore(state => state)
+    useEffect(() => {
+        if (currentUser) {
+            (async () => {
+                const response = await fetch("http://localhost:2001/getnotifications", {
+                    method: "POST",
+                    headers: {"Content-Type": "application/json"},
+                    body: JSON.stringify({secretKey: currentUser.secretKey})
+                });
+                const data = await response.json();
+                setNotifications(data.notifications);
+            })();
+        }
+    }, [currentUser]);
     return (
         <div className="container">
-            <h2>User profile page</h2>
-            <div className="d-flex flex-wrap">
-                <p>You were poked by username</p>
-                <p>time</p>
-            </div>
+            <h2>{currentUser?.username}'s Profile</h2>
+            <h3>Notifications:</h3>
+            {notifications.map((notif, index) => (
+                <NotificationItem key={index} notif={notif} />
+            ))}
         </div>
     );
 };
