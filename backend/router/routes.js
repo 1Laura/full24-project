@@ -4,34 +4,15 @@ const router = express.Router();
 const {
     registerUser,
     loginUser,
-    getAllUsers,
-    pokeUser,
-    getNotifications,
-    pokeBack,
-    deleteAccount
 } = require("../controllers/mainControllers");
 
-const {validateRegister, validateUserForLogin} = require("../middleware/validators");
+const {validateRegister, validateLogin} = require("../middleware/validators");
 
 // register new user
 router.post("/register", validateRegister, registerUser);
 
 // login user
-router.post("/login", validateUserForLogin, loginUser);
+router.post("/login", validateLogin, loginUser);
 
-// get all users
-router.get("/getallusers", getAllUsers);
-
-// Poke a user
-router.post("/poke", pokeUser);
-
-// Get notifications
-router.post("/getnotifications", getNotifications);
-
-// Poke back
-router.post("/pokeback", pokeBack);
-
-// Delete account
-router.post("/deleteaccount", deleteAccount);
 
 module.exports = router;
