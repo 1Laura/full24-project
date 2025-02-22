@@ -13,7 +13,6 @@ module.exports = {
             bcrypt.genSalt(5, (err, salt) => {
                 bcrypt.hash(password, salt, (err, hash) => {
                     user.userPasswordHash = hash;
-
                     // console.log("register " + hash)//hash dedam i users array
                     // Store hash in your password DB.
 
@@ -27,18 +26,18 @@ module.exports = {
     loginUser: (req, res) => {
         const {username, password} = req.body;
         const myUser = users.find(user => user.username === username);
-        console.log("if my user" + myUser);
         if (myUser) {
-
             bcrypt.compare(password, myUser.userPasswordHash, (err, result) => {//password, userPasswordHash ->pirmas passwordas is frontendo kur atsiunte useris, antras is users array
                 console.log(result)//hash dedam i users array
                 // Store hash in your password DB.
                 if (result) {
                     return res.send({message: "user logged in", error: false, users});
+                } else {
+                    return res.send({message: "incorrect password", error: true})
                 }
             })
         } else {
-            return res.send({message: "user doesn't exist",})
+            return res.send({message: "user doesn't exist", error: true})
         }
     }
 }
