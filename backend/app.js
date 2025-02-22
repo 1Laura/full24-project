@@ -25,28 +25,3 @@ app.use("/", mainRouter);//visos uzklausos keliauja i endpointa
 
 app.listen(2001);
 console.log("server run 2001");
-
-// hash password
-// function register() {
-//     const userPassword = "slaptas123";
-//
-//     bcrypt.genSalt(5, (err, salt) => {
-//         bcrypt.hash(userPassword, salt, (err, hash) => {
-//             console.log("register "+hash)//hash dedam i users array
-//             // Store hash in your password DB.
-//         });
-//     });
-// }
-//
-// register();
-//
-// // on user login check if user password same as hasc
-// function login() {
-//     const userPassword = "slaptas1235";
-//     const userPasswordHash = "$2b$05$shT7dBANW1k.d02.g31JBejtpl53omNWH3AxGbZ1/HyXFNlwNq8HO";
-//     bcrypt.compare(userPassword, userPasswordHash, (err, result) => {
-//         console.log(result)//hash dedam i users array
-//         // Store hash in your password DB.
-//     });
-// }
-// login();

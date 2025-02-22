@@ -8,10 +8,12 @@ const UserLogin = () => {
     const [success, setSuccess] = useState("");
 
     const handleSubmit = async () => {
-        const username = usernameRef.current.value;
-        const password = passwordRef.current.value;
+        const user = {
+            username: usernameRef.current.value,
+            password: passwordRef.current.value,
+        }
 
-        if (!username || !password) {
+        if (!user.username || !user.password) {
             setError("All fields are required");
             return;
         }
@@ -23,12 +25,12 @@ const UserLogin = () => {
                 headers: {
                     "Content-Type": "application/json",
                 },
-                body: JSON.stringify({username, password}),
+                body: JSON.stringify(user),
             });
 
             const data = await response.json();
+            console.log(data);
 
-            console.log(data)
         } catch (err) {
             setError(err.message);
         }
