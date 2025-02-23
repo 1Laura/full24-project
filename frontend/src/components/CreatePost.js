@@ -26,9 +26,8 @@ const CreatePost = () => {
             .then(data => {
                 console.log(data)
             })
-
-        setTitle("");
-        setDescription("");
+        // setTitle("");
+        // setDescription("");
     };
 
     return (

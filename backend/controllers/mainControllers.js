@@ -34,7 +34,8 @@ module.exports = {
             bcrypt.compare(password, myUser.userPasswordHash, (err, result) => {//password, userPasswordHash ->pirmas passwordas is frontendo kur atsiunte useris, antras is users array
 
                 if (result) {
-                    delete myUser.password; //istrina keys is myUser, password
+                    let user = {...myUser};
+                    delete user.password; //istrina keys is myUser, password
                     const token = jwt.sign(myUser, process.env.SECRET_KEY);
                     console.log(token);
                     return res.send({message: "user logged in", error: false, token})
@@ -46,6 +47,7 @@ module.exports = {
             return res.send({message: "user doesn't exist", error: true})
         }
     },
+
     createPost: (req, res) => {
         const userToken = req.headers.authorization;
         jwt.verify(userToken, process.env.SECRET_KEY, async (err, user) => {
