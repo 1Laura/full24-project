@@ -26,5 +26,5 @@ module.exports = {
         }
         // console.log("login");
         next();
-    }
+    },
 };

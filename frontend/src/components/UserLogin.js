@@ -30,6 +30,9 @@ const UserLogin = () => {
 
             const data = await response.json();
             console.log(data);
+            if (!data.error) {
+                localStorage.setItem("token", data.token);
+            }
 
         } catch (err) {
             setError(err.message);
@@ -41,7 +44,6 @@ const UserLogin = () => {
             <h2>User Login</h2>
             {error && <p style={{color: "red"}}>{error}</p>}
             {success && <p style={{color: "green"}}>{success}</p>}
-
 
             <div style={{marginBottom: "10px"}}>
                 <label>Username:</label>

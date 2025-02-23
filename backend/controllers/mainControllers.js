@@ -1,6 +1,8 @@
-const {uid} = require("uid");
 const bcrypt = require("bcrypt");
+const jwt = require("jsonwebtoken");
+
 const users = [];
+const userPosts = [];
 
 module.exports = {
     registerUser: (req, res) => {
@@ -25,13 +27,17 @@ module.exports = {
 
     loginUser: (req, res) => {
         const {username, password} = req.body;
+
         const myUser = users.find(user => user.username === username);
+
         if (myUser) {
             bcrypt.compare(password, myUser.userPasswordHash, (err, result) => {//password, userPasswordHash ->pirmas passwordas is frontendo kur atsiunte useris, antras is users array
-                console.log(result)//hash dedam i users array
-                // Store hash in your password DB.
+
                 if (result) {
-                    return res.send({message: "user logged in", error: false, users});
+                    delete myUser.password; //istrina keys is myUser, password
+                    const token = jwt.sign(myUser, process.env.SECRET_KEY);
+                    console.log(token);
+                    return res.send({message: "user logged in", error: false, token})
                 } else {
                     return res.send({message: "incorrect password", error: true})
                 }
@@ -39,5 +45,22 @@ module.exports = {
         } else {
             return res.send({message: "user doesn't exist", error: true})
         }
+    },
+    createPost: (req, res) => {
+        const userToken = req.headers.authorization;
+        jwt.verify(userToken, process.env.SECRET_KEY, async (err, user) => {
+            console.log(user);
+
+            if (user) {
+                const {email, username} = user;
+                const {title, description} = req.body;
+                userPosts.push({title, description, email, username});
+                return res.send({message: "created post", error: false, userPosts})
+            } else {
+                return res.send({message: "doesn't found user", error: true})
+            }
+        })
+        return res.send({message: "doesn't found user", error: true})
     }
+
 }
