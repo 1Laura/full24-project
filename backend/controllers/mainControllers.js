@@ -3,25 +3,29 @@ const jwt = require("jsonwebtoken");
 
 const users = [];
 const userPosts = [];
+const userColors = [];
 
 module.exports = {
     registerUser: (req, res) => {
         const {email, username, password} = req.body;
-        const user = {email, username};
+
         const existUser = users.find(user => user.username === username && user.email === email)
         if (existUser) {
             res.send({message: "User exist", error: true});
         } else {
             bcrypt.genSalt(5, (err, salt) => {
                 bcrypt.hash(password, salt, (err, hash) => {
-                    user.userPasswordHash = hash;
+                    const user = {
+                        email,
+                        username,
+                        userPasswordHash: hash
+                    };
                     // console.log("register " + hash)//hash dedam i users array
                     // Store hash in your password DB.
-
+                    users.push(user);
+                    res.send({message: "register", error: false, users});
                 });
             });
-            users.push(user);
-            res.send({message: "register", error: false, users});
         }
     },
 
@@ -35,7 +39,7 @@ module.exports = {
 
                 if (result) {
                     let user = {...myUser};
-                    delete user.password; //istrina keys is myUser, password
+                    delete user.userPasswordHash; //istrina keys is myUser, password
                     const token = jwt.sign(myUser, process.env.SECRET_KEY);
                     console.log(token);
                     return res.send({message: "user logged in", error: false, token})
@@ -44,7 +48,7 @@ module.exports = {
                 }
             })
         } else {
-            return res.send({message: "user doesn't exist", error: true})
+            return res.send({message: "User not found", error: true})
         }
     },
 
@@ -59,10 +63,36 @@ module.exports = {
                 userPosts.push({title, description, email, username});
                 return res.send({message: "created post", error: false, userPosts})
             } else {
-                return res.send({message: "doesn't found user", error: true})
+                return res.send({message: "User not found", error: true})
             }
         })
-        return res.send({message: "doesn't found user", error: true})
-    }
+        // return res.send({message: "doesn't found user", error: true})
+    },
+    createColor: (req, res) => {
+        const userToken = req.headers.authorization;
+        jwt.verify(userToken, process.env.SECRET_KEY, async (err, item) => {
+            // console.log(item);
 
+            if (item) {
+                const {username} = item;
+                const {color} = req.body;
+                userColors.push({color, username});
+                // console.log(userColors)
+                return res.send({message: "created color", error: false})
+            } else {
+                return res.send({message: "User not found", error: true})
+            }
+        })
+    },
+    getColor: (req, res) => {
+        const userToken = req.headers.authorization;
+        jwt.verify(userToken, process.env.SECRET_KEY, async (err, item) => {
+            if (item) {
+                // console.log(userColors)
+                return res.send({error: false, userColors})
+            } else {
+                return res.send({message: "User not found", error: true})
+            }
+        })
+    }
 }

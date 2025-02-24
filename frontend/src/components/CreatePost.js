@@ -48,9 +48,7 @@ const CreatePost = () => {
                 onChange={(e) => setDescription(e.target.value)}
             />
             </div>
-            <button onClick={handleSubmit}>Create Post
-
-            </button>
+            <button onClick={handleSubmit}>Create Post</button>
 
         </div>
     );

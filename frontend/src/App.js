@@ -1,24 +1,21 @@
 import 'bootstrap/dist/css/bootstrap.css';
 import './App.css';
-import UserRegister from "./components/UserRegister";
-import UserLogin from "./components/UserLogin";
-import CreatePost from "./components/CreatePost";
+import Toolbar from "./components/Toolbar";
+import UserRegisterLoginCreatePostPage from "./pages/UserRegisterLoginCreatePostPage";
+import ColorPage from "./pages/ColorPage";
+import {BrowserRouter, Route, Routes} from "react-router-dom";
 
 
 function App() {
     return (
         <div className="container">
-            <div className="d-flex">
-                <div className="flex-grow-1">
-                    <UserRegister/>
-                </div>
-                <div className="flex-grow-1">
-                    <UserLogin/>
-                </div>
-            </div>
-            <div className="m-5">
-                <CreatePost/>
-            </div>
+            <BrowserRouter>
+                <Toolbar/>
+                <Routes>
+                    <Route path="/" element={<UserRegisterLoginCreatePostPage/>}></Route>
+                    <Route path="/color" element={<ColorPage/>}></Route>
+                </Routes>
+            </BrowserRouter>
         </div>
     );
 }

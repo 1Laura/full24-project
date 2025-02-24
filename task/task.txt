@@ -1,3 +1,8 @@
-Make it possible to send message to other user. Show all users in users list, each user should have button "send message" which will open modal and iput to send message to this user
+2.1. Padaryti, kad useris galetu nusiusti spalva i backa. Fronte du komponentai. Vienas, pasirinkti spalva ir paspaudzia add, i backa nusiunciamas requestas irasomas i array. Antras kompomente turi buti username ir backround color jo pasirinkta spalva.
+2.2.make logic of post deletion, before deleting post, make sure user is owner of the post. so only own posts could be deleted
+
+
+
+1. Make it possible to send message to other user. Show all users in users list, each user should have button "send message" which will open modal and iput to send message to this user
 send message.
 zinutes deti i userio obejkta, kai jis yra sukuriamas
