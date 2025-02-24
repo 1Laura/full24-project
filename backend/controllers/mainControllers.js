@@ -39,8 +39,8 @@ module.exports = {
 
                 if (result) {
                     let user = {...myUser};
-                    delete user.userPasswordHash; //istrina keys is myUser, password
-                    const token = jwt.sign(myUser, process.env.SECRET_KEY);
+                    delete user.userPasswordHash; //password is array
+                    const token = jwt.sign(user, process.env.SECRET_KEY);
                     console.log(token);
                     return res.send({message: "user logged in", error: false, token})
                 } else {
