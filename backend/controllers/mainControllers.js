@@ -53,36 +53,24 @@ module.exports = {
     },
 
     createPost: (req, res) => {
-        const userToken = req.headers.authorization;
-        jwt.verify(userToken, process.env.SECRET_KEY, async (err, user) => {
-            console.log(user);
+        const {title, description, user} = req.body;
+        console.log("is req.body" + title, description, user)
 
-            if (user) {
-                const {email, username} = user;
-                const {title, description} = req.body;
-                userPosts.push({title, description, email, username});
-                return res.send({message: "created post", error: false, userPosts})
-            } else {
-                return res.send({message: "User not found", error: true})
-            }
-        })
-        // return res.send({message: "doesn't found user", error: true})
+        userPosts.push({
+            title,
+            description,
+            email: user.email,
+            username: user.username//user.username is userAuth.js 10eil.
+        });
+
+        return res.send({message: "is kontrolerio", error: false, success: true})
     },
     createColor: (req, res) => {
-        const userToken = req.headers.authorization;
-        jwt.verify(userToken, process.env.SECRET_KEY, async (err, item) => {
-            // console.log(item);
+        const {color, user} = req.body;
 
-            if (item) {
-                const {username} = item;
-                const {color} = req.body;
-                userColors.push({color, username});
-                // console.log(userColors)
-                return res.send({message: "created color", error: false})
-            } else {
-                return res.send({message: "User not found", error: true})
-            }
-        })
+        userColors.push({color, username: user.username});
+        // console.log(userColors)
+        return res.send({message: "created color", error: false, success: true})
     },
     getColor: (req, res) => {
         const userToken = req.headers.authorization;
