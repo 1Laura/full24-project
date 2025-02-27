@@ -1,8 +1,12 @@
-2.1. Padaryti, kad useris galetu nusiusti spalva i backa. Fronte du komponentai. Vienas, pasirinkti spalva ir paspaudzia add, i backa nusiunciamas requestas irasomas i array. Antras kompomente turi buti username ir backround color jo pasirinkta spalva.
-2.2.make logic of post deletion, before deleting post, make sure user is owner of the post. so only own posts could be deleted
+make application for items trade
 
+each user on registration gets array of random items
 
+later it should be able to ask other user for particular items.
 
-1. Make it possible to send message to other user. Show all users in users list, each user should have button "send message" which will open modal and iput to send message to this user
-send message.
-zinutes deti i userio obejkta, kai jis yra sukuriamas
+When other user asked for items, he gets notification, which he has to accept or decline if accepted of declined, notification should be deleted after action
+
+in fron and make pages to show you items list, to show your notifications, to show all users and page for single user, where you can ask him for some item
+
+make it so all pages in screen shots would be able to visit by toolbar, only after user logs in
+

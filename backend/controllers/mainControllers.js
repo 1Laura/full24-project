@@ -70,7 +70,7 @@ module.exports = {
 
         userColors.push({color, username: user.username});
         // console.log(userColors)
-        return res.send({message: "created color", error: false, success: true})
+        return res.send({message: "created color is controlerio", error: false, success: true})
     },
     getColor: (req, res) => {
         const userToken = req.headers.authorization;
