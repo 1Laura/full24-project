@@ -6,8 +6,8 @@ const Toolbar = () => {
 
     return (
         <div className="m-3 d-flex">
-            <Link to="/" className="p-2">Example</Link>
-            <Link to="/color" className="p-2">Color page</Link>
+            <Link to="/" className="p-2">Register/Login</Link>
+            <Link to="/color" className="p-2">some </Link>
         </div>
     );
 };

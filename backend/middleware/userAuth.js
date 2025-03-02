@@ -9,8 +9,8 @@ module.exports = (req, res, next) => {
         if (!item) return res.send({success: false})
 
         req.body.user = item;//.user -> sukuriu pats, įrasau i req.body
-        console.log(err)
-        console.log(item);
+        // console.log(err)
+        // console.log(item);
 
         next();
     })

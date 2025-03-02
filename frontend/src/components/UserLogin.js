@@ -1,41 +1,32 @@
 import React, {useRef, useState} from 'react';
+import http from "../plugins/https";
+import {useNavigate} from "react-router-dom";
 
 const UserLogin = () => {
     const usernameRef = useRef(null);
     const passwordRef = useRef(null);
-
+    const navigate = useNavigate();
     const [error, setError] = useState("");
     const [success, setSuccess] = useState("");
 
-    const handleSubmit = async () => {
-        const user = {
-            username: usernameRef.current.value,
-            password: passwordRef.current.value,
-        }
+    const handleSubmit = async (e) => {
+        e.preventDefault();
+        setError("");
 
-        if (!user.username || !user.password) {
+        const username = usernameRef.current.value;
+        const password = passwordRef.current.value;
+
+        if (!username || !password) {
             setError("All fields are required");
             return;
         }
-        setError("");
 
-        try {
-            const response = await fetch("http://localhost:2001/login", {
-                method: "POST",
-                headers: {
-                    "Content-Type": "application/json",
-                },
-                body: JSON.stringify(user),
-            });
+        const response = await http.post("http://localhost:2001/login", {username, password});
 
-            const data = await response.json();
-            console.log(data);
-            if (!data.error) {
-                localStorage.setItem("token", data.token);
-            }
-
-        } catch (err) {
-            setError(err.message);
+        console.log(response)
+        if (response.success) {
+            localStorage.setItem("token", response.token);
+            navigate("/inventory");
         }
     };
 

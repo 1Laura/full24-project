@@ -1,9 +1,8 @@
 import React from 'react';
 import UserRegister from "../components/UserRegister";
 import UserLogin from "../components/UserLogin";
-import CreatePost from "../components/CreatePost";
 
-const UserRegisterLoginCreatePostPage = () => {
+const RegisterLoginPage = () => {
     return (
         <div className="container">
             <div className="d-flex">
@@ -14,11 +13,8 @@ const UserRegisterLoginCreatePostPage = () => {
                     <UserLogin/>
                 </div>
             </div>
-            <div className="m-5">
-                <CreatePost/>
-            </div>
         </div>
     );
 };
 
-export default UserRegisterLoginCreatePostPage;
+export default RegisterLoginPage;
