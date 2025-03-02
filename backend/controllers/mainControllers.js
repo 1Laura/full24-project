@@ -50,8 +50,12 @@ module.exports = {
     },
 
     getInventory: (req, res) => {
-        const {user} = req.body;//user objekte yra iconai su id, ir token
+        const {user} = req.body;//tokenas su midleware iraso i req body useri
         console.log(user)
-        return res.send({error: false, success: true})
+
+        const myInventory = items.find(item => item.username === user.username)
+
+
+        return res.send({error: false, success: true, myInventory})
     }
 }
