@@ -37,22 +37,21 @@ module.exports = {
         const {username, password} = req.body;
 
         const myUser = users.find(user => user.username === username);
+        if (!myUser) return res.send({message: "User not found", error: true, success: false})
 
-        if (myUser) {
-            bcrypt.compare(password, myUser.password, (err, result) => {//password, userPasswordHash ->pirmas passwordas is frontendo kur atsiunte useris, antras is users array
-
-                if (result) {
-                    let user = {...myUser};
-                    delete user.password; //password is array
-                    const token = jwt.sign(user, process.env.SECRET_KEY);
-                    console.log(token);
-                    return res.send({message: "user logged in", error: false, success: true, token})
-                } else {
-                    return res.send({message: "incorrect password", error: true, success: false})
-                }
-            })
-        } else {
-            return res.send({message: "User not found", error: true, success: false})
-        }
+        bcrypt.compare(password, myUser.password, (err, result) => {//password, userPasswordHash ->pirmas passwordas is frontendo kur atsiunte useris, antras is users array
+            if (!result) return res.send({message: "incorrect password", error: true, success: false})
+            let user = {...myUser};
+            delete user.password; //password is array
+            const token = jwt.sign(user, process.env.SECRET_KEY);
+            // console.log(token);
+            return res.send({message: "user logged in", error: false, success: true, token});
+        })
     },
+
+    getInventory: (req, res) => {
+        const {user} = req.body;//user objekte yra iconai su id, ir token
+        console.log(user)
+        return res.send({error: false, success: true})
+    }
 }
